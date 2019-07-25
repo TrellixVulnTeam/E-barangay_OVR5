@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Send Notification{% endblock %}
+{% block content %}
+<!-- send notification FORM!! -->
+</head>
+<body>
+	<div class="content-section">
+		<form method="POST" class="mb-4">
+			{% csrf_token %}
+			<legend class="border-bottom mb-4">Send Notification</legend>
+			<div class="active-cyan-3 active-cyan-4 mb-4">
+				<label>Find User</label>
+				{{ form }}
+  				<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+			</div>
+			<div class="form-group">
+			  <label for="exampleFormControlTextarea2">Content</label>
+			  <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+			</div>
+			<div class="form-group pd-5">
+				<button class="btn btn-outline-info" type="submit">Send</button>
+			</div>
+		</form>
+		</form>
+	</div>
+</body>
+</html>
+{% endblock %}
+<!--
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Send Notification</legend>
+				
+			</fieldset>
+			<div class="form-group pd-5">
+				<button class="btn btn-outline-info" type="submit">Send</button>
+			</div>
+		</form>
+	</div>
+  -->

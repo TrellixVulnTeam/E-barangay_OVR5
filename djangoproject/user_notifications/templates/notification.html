@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%block title%} Notifications {% endblock %}
+{% block content %}
+	{% for notification in notifications %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<article class="media content-section">
+		<img class="rounded-circle article-img" src="{{ notification.sender.profile.image.url }}">
+	  <div class="media-body">
+	    <div class="article-metadata">
+	      <h1 class="mr-2">{{ notification.sender }}</h1>
+	      <small class="text-muted">{{ notification.date_sent|date:"F d Y"}}  at</small>
+	      <small class="text-muted">{{ notification.date_sent|time:"H:i"}}</small><br>
+	      <small class="text-muted">Notification about {{ notification.concern_type }}</small>
+	    </div>
+<!-- 	    <h2 class="article-title">{{ notification.concern_type }}</h2> -->
+	    <p class="article-content p-3">{{ notification.content }}</p>
+	  </div>
+	</article>
+</body>
+</html>
+	{% endfor %}
+{% endblock %}

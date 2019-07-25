@@ -1,0 +1,47 @@
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<style type="text/css">
+			h2{
+				padding:10px;
+				font-family: arial;
+				/*text-transform: uppercase;*/
+				text-align:center;
+				margin-left:50;
+				color:white;
+				font-size:18px;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title>Animated login form</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'pages/login.css' %}">
+	</head>
+	<body>
+	<div class="content-section">
+		<form class="box" method="POST">
+			{% csrf_token %}
+			<div class="login-header">
+			<img src="{% static 'images/logo-1.png' %}" name="logo">
+			</div>
+			<h1>Sign in</h1>
+				<h2>{{ form|crispy }}</h2>
+				<div class="inputBox">
+					<!--<input type="text" name="username" required="">
+					<label>Username</label>-->
+				</div>
+				<div class="inputBox2">
+					<!--<input type="Password" name="pass" required="">
+					<label>Password</label>-->
+				</div>
+				<div class="btn">
+				<input type="submit" name="" value="Log In">
+				</div>
+			</div>
+		</form>
+	</div>
+	</body>
+	</html>
+{% endblock content %}

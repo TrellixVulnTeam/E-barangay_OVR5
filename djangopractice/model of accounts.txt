@@ -1,0 +1,137 @@
+from django.conf import settings
+from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager # the AbstractBaseUser is the class that gonna be implementing for user model
+
+
+User = settings.AUTH_USER_MODEL
+
+class UserManager(BaseUserManager):
+	def create_user(self,username, email,password=None, is_active=True, is_staff=False, is_tanod=False, is_admin=False):
+		# def create_user(self,username ,email,full_name ,gender=None ,password=None, is_active=True, is_staff=False, is_tanod=False, is_admin=False):
+		if not email:
+			raise ValueError("Users must have an email address")
+		if not username:
+			raise ValueError("Users must have a username")
+		if not password:
+			raise ValueError("Users must have a password")
+		user = self.model(
+			email = self.normalize_email(email)
+			# USERNAME_FIELD = self.normalize_username(username)
+			# username =  username
+
+		)
+		user.username = username
+		user.first_name = first_name
+		user.last_name = last_name
+		# user.gender = gender
+		user.set_password(password) # change user password
+		user.staff = is_staff
+		user.tanod = is_tanod
+		user.admin = is_admin
+		user.active = is_active
+		user.save(using=self._db)
+		return user
+
+	# def create_staffuser(self,username, email,full_name, gender, password=None):
+	def create_staffuser(self, email, password):		
+		user = self.create_user(
+			username,
+			email,
+			# full_name,
+			# gender,
+			password = password,
+			
+		)
+		is_staff = True,
+		is_tanod = True, # for the mean time, Change it to False if separating of keywords are already set up
+		user.save(using=self._db)
+		return user
+
+	# def create_tanoduser(self,username, email,full_name, gender, password=None):
+	def create_tanoduser(self, email, password):
+		user = self.create_user(
+			username,
+			email,
+			# full_name,
+			# gender,
+			password = password,
+			
+		)
+		is_staff = True, # for the mean time, Change it to False if separating of keywords are already set up
+		is_tanod = True,
+		user.save(using=self._db)
+		return user
+
+
+	# def create_superuser(self,username, email,full_name, gender, password=None):
+	def create_superuser(self, email, password):
+		user = self.create_superuser(
+			# username =  username,
+			email = email,
+			# full_name,
+			# gender,
+			password = self.password,
+
+		)
+		# email,
+		# password = password,
+		is_staff = True,
+		is_tanod = True,
+		is_admin = True,
+		user.save(using=self._db)
+		return user
+
+# New user auth
+class User(AbstractBaseUser):
+	choices = [
+		(' Male','Male'),
+		('Female','Female'),
+	]
+	username 	=models.CharField(max_length=255, unique=True)
+	email		=models.EmailField(max_length = 255, unique=True)
+	first_name 	=models.CharField(max_length=255)
+	last_name 	=models.CharField(max_length=255)
+	# username 	=models.CharField(max_length=255,unique=True)
+	# gender		=models.CharField(max_length=100,choices=choices)
+	active		=models.BooleanField(default=True) # can login
+	staff		=models.BooleanField(default=True) # non-super user
+	tanod		=models.BooleanField(default=True) # non-super user
+	admin		=models.BooleanField(default=True) # superuser
+	date_joined	=models.DateTimeField(timezone.now)
+
+	# USERNAME_FIELD = 'username' #username
+	# USERNAME_FIELD and password are required by default
+	REQUIRED_FIELDS = ['username','email,','first_name','last_name'] #sample ['full_name']
+
+	objects = UserManager()
+	
+	def __str__(self):
+		return self.email
+
+	def get_full_name(self):
+		return self.email
+
+	def get_short_name(self):
+		return self.email
+
+	@property
+	def is_staff(self):
+		return self.staff
+
+	@property
+	def is_tanod(self):
+		return self.tanod
+
+	@property
+	def is_admin(self):
+		return self.admin
+
+	@property
+	def is_active(self):
+		return self.active
+
+# user = User
+	
+	
+	

@@ -1,0 +1,128 @@
+			body{
+				margin: 0;
+				padding: : 0;
+				font-family: sans-serif;
+				background: #34495e;
+			}
+			.box{
+				width: 360px;
+				padding:20px;
+				position:absolute;
+				top: 50%;
+				left: 50%;
+				border-radius: 10px;
+				transform: translate(-50%,-50%);
+				background: #262626;
+				box-shadow: 0 15px 25px rgba(0,0,0,.5);
+				text-align: center;
+			}
+			.box .inputBox label
+			{
+				position:absolute;
+				top:0;
+				left:0;
+				padding:10px;
+				top: 56%;
+				left: 20%;
+				position:absolute;
+				font-size:18px;
+				color:grey;
+				pointer-events: none;
+				transition:.5s;
+			}
+			.box .inputBox2 label
+			{
+				position:absolute;
+				top:0;
+				left:0;
+				padding:10px;
+				top: 73%;
+				left: 20%;
+				position:absolute;
+				font-size:18px;
+				color:grey;
+				pointer-events: none;
+				transition:.5s;
+			}
+			.box .inputBox input:focus ~ label,
+			.box .inputBox input:valid ~ label
+			{
+				top: 48.5%;
+				left:10%;
+				color:white;
+				font-size:18px;
+			}
+			.box .inputBox2 input:focus ~ label,
+			.box .inputBox2 input:valid ~ label
+			{
+				top: 65.3%;
+				left:10%;
+				color:white;
+				font-size:18px;
+			}				
+
+			.box h1{
+				padding:10px;
+				color:white;
+				text-transform: uppercase;
+				font-weight: 500;
+			}			
+			.box input[type ="text"], .box input[type="password"]{
+				border:0;
+				background: none;
+				display: block;
+				margin: 15px auto;
+				text-align: center;
+				font-size:19px;
+				border: 2px solid #3498db;
+				padding: 14px 10px;
+				width: 250px;
+				outline: none;
+				color:white;
+				border-radius: 24px;
+				transition: 0.25s;
+			}
+			.inputBox{
+				padding-bottom:1px;
+			}
+			.submitBtn{
+				position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			}
+			.box input[type ="text"]:focus,.box input[type="Password"]:focus{
+				width:300px;
+				border-color:#db7734;
+			}
+			.box input[type="submit"]{
+				border:0;
+				background: none;
+				right:50%;
+				text-align: center;
+				font-size:18px;
+				border: 2px solid #db7734;
+				padding: 14px 40px;
+				outline: none;
+				color:white;
+				border-radius: 24px;
+				cursor: pointer;
+			}
+			.box input[type="submit"]:hover{
+				background: #db7734;
+			}
+			.login-header{
+				padding:0px 18px;
+			}			
+			img{
+				width:150px;
+				height: 150px;
+    			vertical-align: left;
+			}
+			.inputBox2{
+				padding:0px;
+			}
+			.{
+				color:white;
+			}
