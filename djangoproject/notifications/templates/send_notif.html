@@ -9,7 +9,8 @@
 			{% csrf_token %}
 			<legend class="border-bottom mb-4">Send Notification</legend>
 			<div class="active-cyan-3 active-cyan-4 mb-4">
-				<label>Find User</label>
+				 {{output}}
+				<label>Find User </label>
 				{{ form }}
   				<input class="form-control" type="text" placeholder="Search" aria-label="Search" name="username">
 			</div>

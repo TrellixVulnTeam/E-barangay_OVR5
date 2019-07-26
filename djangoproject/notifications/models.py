@@ -12,7 +12,7 @@ concern_choices = [
 class Send_notification(models.Model):
 	#user_reciever = models.ForeignKey(User,max_length=100,on_delete =models.CASCADE)
 	title 					= models.CharField(max_length=100, default='SOMESTRING')
-	notification_concern 	= models.CharField(max_length=100,choices=concern_choices)
+	notification_concern 	= models.CharField(max_length=100,choices=concern_choices,blank=True )
 	content 			 	= models.TextField(max_length=255)
 	date_sent				= models.DateTimeField(default = timezone.now)
 	sender					= models.ForeignKey(User,on_delete=models.CASCADE) # sender to user
