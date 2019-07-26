@@ -8,6 +8,7 @@ concern_choices = [
 	('Requested Document','Requested Document'),
 	('Complaint','Complaint'),
 	]
+	
 class Send_notification(models.Model):
 	#user_reciever = models.ForeignKey(User,max_length=100,on_delete =models.CASCADE)
 	title 					= models.CharField(max_length=100, default='SOMESTRING')
